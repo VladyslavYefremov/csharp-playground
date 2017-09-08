@@ -53,6 +53,8 @@
     <Compile Include="Async\ForEach.cs" />
     <Compile Include="Async\LongRunning.cs" />
     <Compile Include="Async\VoidProblem.cs" />
+    <Compile Include="Events\Inheritance.cs" />
+    <Compile Include="Linq\MultipleExecution.cs" />
     <Compile Include="Methods\Overloading.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

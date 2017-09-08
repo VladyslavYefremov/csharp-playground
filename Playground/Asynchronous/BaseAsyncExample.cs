@@ -36,8 +36,4 @@ namespace Playground.Asynchronous
 			}
 		}
 	}
-	/**
-	 * http://www.johnchukwuma.com/training/clr_via_c_4th_edition.pdf
-	 * 
-	 */
 }
