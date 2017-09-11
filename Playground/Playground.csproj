@@ -46,6 +46,7 @@
     <Compile Include="Asynchronous\BaseAsyncExample.cs" />
     <Compile Include="Asynchronous\Start.cs" />
     <Compile Include="Asynchronous\Wait.cs" />
+    <Compile Include="Asynchronous\WaitAllAny.cs" />
     <Compile Include="Async\AyncAwait.cs" />
     <Compile Include="Async\CancellationTest.cs" />
     <Compile Include="Async\CancellationTokenTest.cs" />
