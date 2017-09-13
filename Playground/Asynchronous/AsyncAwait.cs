@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Playground.Asynchronous
 {
-	public class WaitAllAny : BaseAsyncExample
-	{
-		public override Task RunAsync()
+	public class AsyncAwait : BaseAsyncExample
+	{	
+		public override async Task RunAsync()
 		{
 			Console.WriteLine("Run async started");
 
@@ -15,13 +15,13 @@ namespace Playground.Asynchronous
 
 			Console.WriteLine(Environment.NewLine + "Getting all random strings by id: ");
 			/**
-			 * All the tasks started by GetAllRandomStringsByIds are finished
-			 * after method is completed
+			 * As GetAllRandomStringsByIds is not awaited so the completion of 
+			 * tasks will continue until await key word
 			 */
-			GetAllRandomStringsByIds(identifiers);
+			var taskWaitingForAllStrings = GetAllRandomStringsByIds(identifiers);
 
 			Console.WriteLine(Environment.NewLine + "Getting first calculated random string: ");
-			var firstCalculatedString =  GetFirstRandomStringsByIds(identifiers);
+			var firstCalculatedString = await GetFirstRandomStringsByIds(identifiers);
 
 			Console.WriteLine(Environment.NewLine + "First calculated string was: " + firstCalculatedString);
 
@@ -29,28 +29,27 @@ namespace Playground.Asynchronous
 			 * RunAsync is completed, but started tasks by GetFirstRandomStringsByIds
 			 * can still be running
 			 */
+			await taskWaitingForAllStrings;
 			Console.WriteLine(Environment.NewLine + "Run async completed");
-
-			return Task.FromResult(true);
 		}
-			
-		private static IEnumerable<string> GetAllRandomStringsByIds(IEnumerable<int> identifiers)
+
+		private static async Task<IEnumerable<string>> GetAllRandomStringsByIds(IEnumerable<int> identifiers)
 		{
 			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 1)).ToList();
 
-			Task.WaitAll(gettingRandomStingTasksList.ToArray<Task>());
+			await Task.WhenAll(gettingRandomStingTasksList.ToArray<Task>());
 
 			return gettingRandomStingTasksList.Select(it => it.Result);
-		}	
-			
-		private static string GetFirstRandomStringsByIds(IEnumerable<int> identifiers)
+		}
+
+		private static async Task<string> GetFirstRandomStringsByIds(IEnumerable<int> identifiers)
 		{
 			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 2)).ToList();
 
 			// returns the index of the completed Task object in the tasks array.
-			var completedTaskIndex = Task.WaitAny(gettingRandomStingTasksList.ToArray<Task>());
+			var completedTask = await Task.WhenAny(gettingRandomStingTasksList.ToArray<Task<string>>());
 
-			return gettingRandomStingTasksList[completedTaskIndex].Result;
+			return completedTask.Result;	
 		}
 
 		private static async Task<string> GetRandomStringByIdAsync(int id, int seed)
