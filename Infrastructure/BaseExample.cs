@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
 
-namespace Playground.Asynchronous
+namespace Infrastructure
 {
-	public abstract class BaseAsyncExample
+	public abstract class BaseExample
 	{
-		public abstract Task RunAsync();
 
 		protected Profiler StartProviler(string name)
 		{

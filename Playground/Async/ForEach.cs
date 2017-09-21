@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure;
 
 namespace Playground.Async
 {
-	public class ForEach
+	[Run]
+	public class ForEach : BaseSynchronousExample
 	{
-		public void Run()
+		public override void Run()
 		{
 			Task.Run(async () =>
 			{

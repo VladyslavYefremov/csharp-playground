@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
+using Infrastructure;
 
 namespace Playground.Linq
 {
-	public class MultipleExecution
+	public class MultipleExecution : BaseSynchronousExample
 	{
 		private readonly Random _random;
 
@@ -12,7 +13,7 @@ namespace Playground.Linq
 			_random = new Random();
 		}
 
-		public void Run()
+		public override void Run()
 		{
 			var numbers = Enumerable.Range(1, 3);
 

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure;
 
 namespace Playground.Async
 {
-	public class LongRunning
+	[Run]
+	public class LongRunning : BaseSynchronousExample
 	{
-		public void Run()
+		public override void Run()
 		{
-			Console.WriteLine("Run");
-
 			try
 			{
 				Task.Run(async () => await LongJobWithExceptionAsync())
