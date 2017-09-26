@@ -6,10 +6,9 @@ using Infrastructure;
 
 namespace Examles.Async
 {
-	[Run]
-	public class LongRunning : BaseSynchronousExample
+	public class LongRunning
 	{
-		public override void Run()
+		public void Run()
 		{
 			try
 			{

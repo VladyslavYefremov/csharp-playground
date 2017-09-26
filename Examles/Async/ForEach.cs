@@ -5,10 +5,9 @@ using Infrastructure;
 
 namespace Examles.Async
 {
-	[Run]
-	public class ForEach : BaseSynchronousExample
+	public class ForEach
 	{
-		public override void Run()
+		public void Run()
 		{
 			Task.Run(async () =>
 			{

@@ -19,25 +19,25 @@ namespace Examles.Linq
 
 			var identifiers = numbers.Select(GetStringById);
 
-			Console.WriteLine(Environment.NewLine + "Creating 1st list");
+			Logger.Write("Creating 1st list");
 			var idListFirst = identifiers.ToList();
 
-			Console.WriteLine(Environment.NewLine + "Creating 2nd list");
+			Logger.Write("Creating 2nd list");
 			var idListSecond = identifiers.ToList();
 
-			Console.WriteLine(Environment.NewLine + "Enumerable identifiers:");
+			Logger.Write("Enumerable identifiers:");
 			foreach (var idString in identifiers)
 			{
 				Console.WriteLine(idString);
 			}
 
-			Console.WriteLine(Environment.NewLine + "First list:");
+			Logger.Write("First list:");
 			foreach (var idString in idListFirst)
 			{
 				Console.WriteLine(idString);
 			}
 
-			Console.WriteLine(Environment.NewLine + "Second list:");
+			Logger.Write("Second list:");
 			foreach (var idString in idListSecond)
 			{
 				Console.WriteLine(idString);

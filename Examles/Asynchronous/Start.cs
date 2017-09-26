@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Infrastructure;
+using Infrastructure.Logging;
 
 namespace Examles.Asynchronous
 {
 	public class Start : BaseAsyncExample
 	{
+		public Start(ILogger logger)
+		{
+			Logger = logger;
+		}
+
 		public override Task RunAsync()
 		{
 			return Task.WhenAll(
@@ -41,7 +47,7 @@ namespace Examles.Asynchronous
 			 *		
 			 *	It was added in .Net 4.5 to help with the increasingly frequent usage of async.
 			 */
-			return Task.Run(() => Console.WriteLine("Task.Run - task"));
+			return Task.Run(() => Logger.Write("Task.Run - task"));
 		}
 
 		/** Task.Factory.StartNew (added with TPL in .Net 4.0) is much more robust. 
@@ -50,7 +56,7 @@ namespace Examles.Asynchronous
 		 */
 		private Task TaskFactoryStartNew()
 		{
-			return Task.Factory.StartNew(() => Console.WriteLine("Task.Factory.StartNew - task"));
+			return Task.Factory.StartNew(() => Logger.Write("Task.Factory.StartNew - task"));
 		}
 	}
 }

@@ -1,10 +1,16 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure;
+using Infrastructure.Logging;
 
 namespace Examles.Asynchronous
 {
 	public class Wait: BaseAsyncExample
 	{
+		public Wait(ILogger logger)
+		{
+			Logger = logger;
+		}
+
 		public override Task RunAsync()
 		{
 			/**
@@ -22,7 +28,7 @@ namespace Examles.Asynchronous
 
 		private async Task DoAsync()
 		{
-			using (StartProviler(nameof(DoAsync)))
+			using (StartProviler(nameof(DoAsync), Logger))
 			{
 				/**
 				 * awaits newly created task that completes in 1000ms

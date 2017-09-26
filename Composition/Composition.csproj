@@ -58,7 +58,8 @@
   <ItemGroup>
     <Compile Include="CompositionContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resolver.cs" />
+    <Compile Include="Resolving\Resolver.cs" />
+    <Compile Include="Resolving\ResolverExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

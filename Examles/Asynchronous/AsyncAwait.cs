@@ -3,38 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure;
+using Infrastructure.Logging;
 
 namespace Examles.Asynchronous
 {
+	[Run]
 	public class AsyncAwait : BaseAsyncExample
-	{	
+	{
+		public AsyncAwait(ILogger logger)
+		{
+			Logger = logger;
+		}
+
 		public override async Task RunAsync()
 		{
-			Console.WriteLine("Run async started");
+			Logger.Write("Run async started");
 
 			var identifiers = Enumerable.Range(1, 5);
 
-			Console.WriteLine(Environment.NewLine + "Getting all random strings by id: ");
+			Logger.Write("Getting all random strings by id: ");
 			/**
 			 * As GetAllRandomStringsByIds is not awaited so the completion of 
 			 * tasks will continue until await key word
 			 */
 			var taskWaitingForAllStrings = GetAllRandomStringsByIds(identifiers);
 
-			Console.WriteLine(Environment.NewLine + "Getting first calculated random string: ");
+			Logger.Write("Getting first calculated random string: ");
 			var firstCalculatedString = await GetFirstRandomStringsByIds(identifiers);
 
-			Console.WriteLine(Environment.NewLine + "First calculated string was: " + firstCalculatedString);
+			Logger.Write("First calculated string was: " + firstCalculatedString);
 
 			/**
 			 * RunAsync is completed, but started tasks by GetFirstRandomStringsByIds
 			 * can still be running
 			 */
 			await taskWaitingForAllStrings;
-			Console.WriteLine(Environment.NewLine + "Run async completed");
+			Logger.Write("Run async completed");
 		}
 
-		private static async Task<IEnumerable<string>> GetAllRandomStringsByIds(IEnumerable<int> identifiers)
+		private async Task<IEnumerable<string>> GetAllRandomStringsByIds(IEnumerable<int> identifiers)
 		{
 			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 1)).ToList();
 
@@ -43,7 +50,7 @@ namespace Examles.Asynchronous
 			return gettingRandomStingTasksList.Select(it => it.Result);
 		}
 
-		private static async Task<string> GetFirstRandomStringsByIds(IEnumerable<int> identifiers)
+		private async Task<string> GetFirstRandomStringsByIds(IEnumerable<int> identifiers)
 		{
 			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 2)).ToList();
 
@@ -53,11 +60,11 @@ namespace Examles.Asynchronous
 			return completedTask.Result;	
 		}
 
-		private static async Task<string> GetRandomStringByIdAsync(int id, int seed)
+		private async Task<string> GetRandomStringByIdAsync(int id, int seed)
 		{
 			await Task.Delay(150); // simulate super difficult calculations
 
-			Console.WriteLine($"[{seed}] A random string was generated for id: {id}");
+			Logger.Write($"[{seed}] A random string was generated for id: {id}");
 
 			return $"{id}. {Guid.NewGuid()}";
 		}
