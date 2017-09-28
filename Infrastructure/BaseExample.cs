@@ -4,8 +4,8 @@ using Infrastructure.Logging;
 namespace Infrastructure
 {
 	public abstract class BaseExample
-	{	
-		protected ILogger Logger;
+	{
+		public ILogger Logger { get; protected set; }
 
 		protected Profiler StartProviler(string name, ILogger logger)
 		{

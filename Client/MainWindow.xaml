@@ -5,17 +5,30 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Client"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="363.683" Width="693.519">
+		Title="Examples" Height="500" Width="900">
 	<Window.DataContext>
 		<ExamplesDataContext xmlns="clr-namespace:Client" />
 	</Window.DataContext>
+
 	<Grid>
-		<TabControl ItemsSource="{Binding Tabs}" x:Name="tabControl" Margin="0,10,0,0">
+		<TabControl ItemsSource="{Binding Tabs}" Margin="0,10,0,0">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
 					<TextBlock Text="{Binding Header}" />
 				</DataTemplate>
 			</TabControl.ItemTemplate>
+			<TabControl.ContentTemplate>
+				<DataTemplate >
+					<ListView ItemsSource="{Binding Messages}">
+						<ListView.View>
+							<GridView>
+								<GridViewColumn DisplayMemberBinding="{Binding Time}" Header="Time" Width="150"/>
+								<GridViewColumn DisplayMemberBinding="{Binding Text}" Header="Text" Width="700"/>
+							</GridView>
+						</ListView.View>
+					</ListView>
+				</DataTemplate>
+			</TabControl.ContentTemplate>
 		</TabControl>
 	</Grid>
 </Window>

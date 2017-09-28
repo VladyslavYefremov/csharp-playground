@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Linq;
 using Infrastructure;
+using Infrastructure.Logging;
 
 namespace Examles.Linq
 {
+	[Run]
 	public class MultipleExecution : BaseSynchronousExample
 	{
 		private readonly Random _random;
 
-		public MultipleExecution()
+		public MultipleExecution(ILogger logger)
 		{
+			Logger = logger;
 			_random = new Random();
 		}
 
@@ -28,19 +31,19 @@ namespace Examles.Linq
 			Logger.Write("Enumerable identifiers:");
 			foreach (var idString in identifiers)
 			{
-				Console.WriteLine(idString);
+				Logger.Write(idString);
 			}
 
 			Logger.Write("First list:");
 			foreach (var idString in idListFirst)
 			{
-				Console.WriteLine(idString);
+				Logger.Write(idString);
 			}
 
 			Logger.Write("Second list:");
 			foreach (var idString in idListSecond)
 			{
-				Console.WriteLine(idString);
+				Logger.Write(idString);
 			}
 
 			/**
@@ -83,7 +86,7 @@ namespace Examles.Linq
 
 		private string GetStringById(int id)
 		{
-			Console.WriteLine($"GetStringById was called for id: {id}");
+			Logger.Write($"GetStringById was called for id: {id}");
 
 			return $"{id,2}. {_random.Next(1000, 9999)}";
 		}

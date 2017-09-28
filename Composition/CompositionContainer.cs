@@ -58,7 +58,7 @@ namespace Composition
 
 				if (!typeToRegister.IsAssignableFrom(exportedType)) continue;
 
-				container.RegisterType(typeToRegister, exportedType, typeToRegister.FullName);
+				container.RegisterType(typeToRegister, exportedType, exportedType.FullName);
 			}
 		}
 

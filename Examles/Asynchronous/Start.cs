@@ -5,6 +5,7 @@ using Infrastructure.Logging;
 
 namespace Examles.Asynchronous
 {
+	[Run]
 	public class Start : BaseAsyncExample
 	{
 		public Start(ILogger logger)
