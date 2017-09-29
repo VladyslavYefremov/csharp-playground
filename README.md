@@ -1,15 +1,14 @@
 # C# playground
 
 ## Todo
+* [ ] Cover all c# cases (from variable declarations to reflection and asynchronous proggraming)
 * [ ] Move resolver to appropriate place 
-* [ ] Add console-style list to tab 
-* [ ] Add coloured output 
 * [ ] Replace Console.WriteLine with Logger.WriteLine
 * [ ] Add *README.md* to associated folders
 * [ ] Add content information to main doc file
-* [ ] Cover all c# cases (from variable declarations to reflection and asynchronous proggraming)
 * [ ] Simplify examples 
-* [ ] Add interview questions
+* [x] Add console-style list to tab 
+* [x] Add coloured output 
 
 ## Design patterns
 * [METANIT patterns](https://metanit.com/sharp/patterns/)

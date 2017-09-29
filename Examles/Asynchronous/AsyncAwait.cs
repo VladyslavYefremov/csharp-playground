@@ -43,7 +43,7 @@ namespace Examles.Asynchronous
 
 		private async Task<IEnumerable<string>> GetAllRandomStringsByIds(IEnumerable<int> identifiers)
 		{
-			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 1)).ToList();
+			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, MessageColor.Blue)).ToList();
 
 			await Task.WhenAll(gettingRandomStingTasksList.ToArray<Task>());
 
@@ -52,19 +52,19 @@ namespace Examles.Asynchronous
 
 		private async Task<string> GetFirstRandomStringsByIds(IEnumerable<int> identifiers)
 		{
-			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, 2)).ToList();
+			var gettingRandomStingTasksList = identifiers.Select(id => GetRandomStringByIdAsync(id, MessageColor.Yellow)).ToList();
 
 			// returns the index of the completed Task object in the tasks array.
 			var completedTask = await Task.WhenAny(gettingRandomStingTasksList.ToArray<Task<string>>());
 
 			return completedTask.Result;	
 		}
-
-		private async Task<string> GetRandomStringByIdAsync(int id, int seed)
+			
+		private async Task<string> GetRandomStringByIdAsync(int id, MessageColor outputColor)
 		{
 			await Task.Delay(150); // simulate super difficult calculations
 
-			Logger.Write($"[{seed}] A random string was generated for id: {id}");
+			Logger.Write($"A random string was generated for id: {id}", outputColor);
 
 			return $"{id}. {Guid.NewGuid()}";
 		}

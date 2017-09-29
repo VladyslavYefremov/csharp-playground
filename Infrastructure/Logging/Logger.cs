@@ -11,6 +11,11 @@ namespace Infrastructure.Logging
 			Write(new Message {Text = text});
 		}	
 
+		public void Write(string text, MessageColor color)
+		{
+			Write(new Message { Text = text, Color = color });
+		}
+
 		public void Write(string text, LogType type)
 		{
 			Write(new Message { Text = text, Type = type });

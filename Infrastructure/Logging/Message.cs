@@ -7,7 +7,7 @@ namespace Infrastructure.Logging
 		public string Text { get; set; } = string.Empty;
 		public LogType Type { get; set; } = LogType.Default;
 		public DateTime Time { get; set; } = DateTime.Now;
-
+		public MessageColor Color { get; set; } = MessageColor.Default;
 		public override string ToString()
 		{
 			return $"{Time.ToShortTimeString()}: {Text} ({Type})";
