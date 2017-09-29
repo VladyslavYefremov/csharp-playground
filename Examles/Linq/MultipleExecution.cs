@@ -31,19 +31,19 @@ namespace Examles.Linq
 			Logger.Write("Enumerable identifiers:");
 			foreach (var idString in identifiers)
 			{
-				Logger.Write(idString);
+				Logger.Write(idString, MessageColor.Yellow);
 			}
 
 			Logger.Write("First list:");
 			foreach (var idString in idListFirst)
 			{
-				Logger.Write(idString);
+				Logger.Write(idString, MessageColor.Green);
 			}
 
 			Logger.Write("Second list:");
 			foreach (var idString in idListSecond)
 			{
-				Logger.Write(idString);
+				Logger.Write(idString, MessageColor.Blue);
 			}
 
 			/**

@@ -1,10 +1,17 @@
-﻿using System;
+﻿using Infrastructure;
+using Infrastructure.Logging;
 
 namespace Examles.Methods
 {
-	public class Overloading
+	[Run]
+	public class Overloading : BaseSynchronousExample
 	{
-		public void Run()
+		public Overloading(ILogger logger)
+		{
+			Logger = logger;
+		}
+
+		public override void Run()
 		{
 			Base baseTypeDerivedObject = new Derived();
 
@@ -14,16 +21,16 @@ namespace Examles.Methods
 			ShowName(derived);
 		}
 
-		private static void ShowName(Base obj)
+		private void ShowName(Base obj)
 		{
-			Console.WriteLine("Called method with 'base class' argument: ");
-			Console.WriteLine(obj.GetName());
+			Logger.Write("Called method with 'base class' argument: ", MessageColor.Yellow);
+			Logger.Write(obj.GetName(), MessageColor.Yellow);
 		}
 
-		private static void ShowName(Derived obj)
+		private void ShowName(Derived obj)
 		{
-			Console.WriteLine("Called method with 'derived class' argument: ");
-			Console.WriteLine(obj.GetName());
+			Logger.Write("Called method with 'derived class' argument: ", MessageColor.Blue);
+			Logger.Write(obj.GetName(), MessageColor.Blue);
 		}
 
 		private class Base

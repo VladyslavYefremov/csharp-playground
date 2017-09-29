@@ -10,12 +10,12 @@ namespace Examles.Events
 
 			public virtual void PublishEvent()
 			{
-				OnUpdate?.Invoke(this, null);
+				Update(this, null);
 			}
 
 			/**
-			 * For ability to call Invoke from derived classes
-			 * this class should implement following member:
+			 * For ability to `Invoke` event from derived classes
+			 * this class mush declare following member:
 			 */
 			protected virtual void Update(object sender, EventArgs e)
 			{
@@ -56,7 +56,7 @@ namespace Examles.Events
 
 				/**
 				 * Calling this method, declared in parent class, allows
-				 * to Invoke delegate
+				 * to invoke delegate
 				 */
 				Update(this, null);
 			}

@@ -1,25 +1,42 @@
 ﻿using System;
 using System.Xml.Serialization;
+using Infrastructure;
+using Infrastructure.Logging;
 using Newtonsoft.Json;
 
 namespace Examles.Serializable
 {
-	public class Json
+	[Run]
+	public class Json : BaseSynchronousExample
 	{
-		public void Run()
+		public Json(ILogger logger)
 		{
-			User adminUser = new Admin();
+			Logger = logger;
+		}
 
-			var serializer = JsonConvert.SerializeObject(adminUser);
+		public override void Run()
+		{
+			User adminUser = new Admin
+			{
+				Id = Guid.NewGuid(),
+				Name = "Vladyslav",
+				Surname = "Yefremov",
+				Access = "Read | Write"
+			};
 
-			Console.WriteLine(serializer);
+			var serializedString = JsonConvert.SerializeObject(adminUser);
+
+			// Writes: {"Access":"Read | Write", "Name":"Vladyslav", "Surname":"Yefremov"}
+			Logger.Write(serializedString);
 		}
 
 		private class User
 		{
 			[JsonIgnore, XmlIgnore]
 			public Guid Id { get; set; }
+
 			public string Name { get; set; }
+
 			public string Surname { get; set; }
 		}
 

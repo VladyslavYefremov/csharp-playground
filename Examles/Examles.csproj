@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asynchronous\AsyncAwait.cs" />
-    <Compile Include="Asynchronous\Start.cs" />
     <Compile Include="Asynchronous\Wait.cs" />
     <Compile Include="Asynchronous\WaitAllAny.cs" />
     <Compile Include="Async\AyncAwait.cs" />
@@ -64,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Asynchronous\README.md" />
+    <None Include="Events\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
