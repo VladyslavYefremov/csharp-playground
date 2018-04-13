@@ -1,5 +1,8 @@
 ﻿# Asynchronous programming	
 
+### Table of Contents
+1. [Task creation and running](#task-creation-and-running)
+
 ## Task creation and running 	
 
 ### From constructor argument:
@@ -51,9 +54,9 @@ It creates a task with the following default values:
 In other words `Task.Run` is a shorthand for `Task.Factory.StartNew` with specific safe arguments:
 ```csharp
 Task.Factory.StartNew(
-    action,
-    CancellationToken.None, 
-    TaskCreationOptions.DenyChildAttach, 
-    TaskScheduler.Default
+	action,
+	CancellationToken.None, 
+	TaskCreationOptions.DenyChildAttach, 
+	TaskScheduler.Default
 );
 ```
