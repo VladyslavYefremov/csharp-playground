@@ -43,6 +43,7 @@
     <Compile Include="BaseAsyncExample.cs" />
     <Compile Include="BaseExample.cs" />
     <Compile Include="BaseSynchronousExample.cs" />
+    <Compile Include="Extensions\LoggingExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogType.cs" />

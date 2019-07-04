@@ -60,6 +60,7 @@
     <Compile Include="Methods\Overloading.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializable\Json.cs" />
+    <Compile Include="Synchronization\MutexExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
