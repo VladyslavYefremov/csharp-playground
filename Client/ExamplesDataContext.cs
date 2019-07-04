@@ -2,17 +2,18 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using Composition.Resolving;
 using Infrastructure;
 using Infrastructure.Logging;
 
 namespace Client
 {
-	public class ExamplesDataContext
+    public class ExamplesDataContext
 	{
-		public ExamplesDataContext()	
-		{
-			var resolver = new Resolver();
+        public ExamplesDataContext()
+        {
+            var resolver = new Resolver();
 				
 			// get examples
 			var asynchronousExamples = resolver.GetAllAsyncExamples().ToList();
@@ -41,7 +42,8 @@ namespace Client
 				var tab = new TabItem { Header = example.GetType().Name };
 
 				// subscribe to output from example
-				example.Logger.OnNewMessage += (msg) => tab.Messages.Add(msg);
+                example.Logger.OnNewMessage +=
+                    msg => Application.Current.Dispatcher.Invoke(() => tab.Messages.Add(msg));
 
 				Tabs.Add(tab);
 			}
@@ -61,9 +63,9 @@ namespace Client
 			{
 				Task.Run(() => example.Run()); // fire and forget
 			}
-		}
+        }
 
-		public class TabItem
+        public class TabItem
 		{
 			public TabItem()
 			{
