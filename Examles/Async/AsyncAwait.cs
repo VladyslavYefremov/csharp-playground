@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Examles.Async
+namespace Examples.Async
 {
 	/**
 	 * Wait, WaitAll, WaitAny
-	 * Task.Run, Task.Facroty.StartNew
+	 * Task.Run, Task.Factory.StartNew
 	 * async, await
 	 * WhenAll, WhenAny
 	 * ContinueWith
 	 * Continuation options
-	 * TaskSheduler
+	 * TaskScheduler
 	 * CancellationToken: IsCancelled, ThrowIfCancellationRequested
 	 * Error handling
 	 * Dead locks
@@ -21,7 +21,7 @@ namespace Examles.Async
 	 * async void problem
 	 **/
 
-	public class AyncAwait
+	public class AsyncAwait
 	{
 		public async Task Run()
 		{

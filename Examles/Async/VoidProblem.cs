@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Examles.Async
+namespace Examples.Async
 {
 	// As a general rule, async lambdas should only be used if they’re converted to a delegate type that returns Task (for example, Func<Task>)
 	public class VoidProblem

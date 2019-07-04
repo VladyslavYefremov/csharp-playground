@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Examles.Async
+namespace Examples.Async
 {
 	public class CancellationTokenTest
 	{

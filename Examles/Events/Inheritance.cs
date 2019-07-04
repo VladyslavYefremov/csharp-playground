@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Examles.Events
+namespace Examples.Events
 {
 	public class Inheritance
 	{
@@ -33,13 +33,13 @@ namespace Examles.Events
 				 * The following (commented) lines of code cause compilation error:		
 				 *		OnUpdate can only appear on the left side of -= and += operators
 				 *		
-				 *	The reason is that .Net creates private instance beriables behind the scenes
+				 *	The reason is that .Net creates private instance variables behind the scenes
 				 *	that actually hold the delegate.
 				 *	
 				 *	For example:
 				 *		public event EventHandler OnUpdate;
 				 *	
-				 *	Is actualy is compiled into:
+				 *	Is actually is compiled into:
 				 *		private EventHandler onUpdateDelegate;
 				 *		
 				 *		public event EventHandler OnUpdate

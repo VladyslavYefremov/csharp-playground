@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Infrastructure;
 using Infrastructure.Logging;
 
-namespace Examles.Asynchronous
+namespace Examples.Asynchronous
 {
 	public class WaitAllAny : BaseAsyncExample
 	{

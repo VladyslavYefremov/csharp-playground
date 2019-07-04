@@ -7,7 +7,7 @@ namespace Infrastructure
 	{
 		public ILogger Logger { get; protected set; }
 
-		protected Profiler StartProviler(string name, ILogger logger)
+		protected Profiler StartProfiler(string name, ILogger logger)
 		{
 			return new Profiler(name, logger);
 		}

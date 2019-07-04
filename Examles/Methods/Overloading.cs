@@ -1,7 +1,7 @@
 ﻿using Infrastructure;
 using Infrastructure.Logging;
 
-namespace Examles.Methods
+namespace Examples.Methods
 {
 	[Run]
 	public class Overloading : BaseSynchronousExample

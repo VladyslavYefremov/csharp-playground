@@ -4,7 +4,7 @@ using Infrastructure;
 using Infrastructure.Logging;
 using Newtonsoft.Json;
 
-namespace Examles.Serializable
+namespace Examples.Serializable
 {
 	[Run]
 	public class Json : BaseSynchronousExample

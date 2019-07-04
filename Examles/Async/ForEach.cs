@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Infrastructure;
 
-namespace Examles.Async
+namespace Examples.Async
 {
 	public class ForEach
 	{

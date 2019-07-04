@@ -18,7 +18,7 @@ namespace Client
 			var asynchronousExamples = resolver.GetAllAsyncExamples().ToList();
 			var synchronousExamples = resolver.GetAllSyncExamples().ToList();
 
-			// union examles and cast to base type
+			// union examples and cast to base type
 			var examples = asynchronousExamples.Cast<BaseExample>()
 				.Concat(synchronousExamples);
 
@@ -27,7 +27,7 @@ namespace Client
 
 			// execute
 			StartAsynchronousExamples(asynchronousExamples);
-			StartSyncronousExamples(synchronousExamples);
+			StartSynchronousExamples(synchronousExamples);
 		}
 
 		public ObservableCollection<TabItem> Tabs { get; set; }
@@ -47,7 +47,7 @@ namespace Client
 			}
 		}
 
-		private void StartAsynchronousExamples(IEnumerable<BaseAsyncExample> examples)
+		private static void StartAsynchronousExamples(IEnumerable<BaseAsyncExample> examples)
 		{
 			foreach (var example in examples)
 			{
@@ -55,7 +55,7 @@ namespace Client
 			}
 		}
 
-		private void StartSyncronousExamples(IEnumerable<BaseSynchronousExample> examples)
+		private static void StartSynchronousExamples(IEnumerable<BaseSynchronousExample> examples)
 		{
 			foreach (var example in examples)
 			{

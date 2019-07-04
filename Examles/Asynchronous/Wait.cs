@@ -2,7 +2,7 @@
 using Infrastructure;
 using Infrastructure.Logging;
 
-namespace Examles.Asynchronous
+namespace Examples.Asynchronous
 {
 	public class Wait: BaseAsyncExample
 	{
@@ -28,7 +28,7 @@ namespace Examles.Asynchronous
 
 		private async Task DoAsync()
 		{
-			using (StartProviler(nameof(DoAsync), Logger))
+			using (StartProfiler(nameof(DoAsync), Logger))
 			{
 				/**
 				 * awaits newly created task that completes in 1000ms
